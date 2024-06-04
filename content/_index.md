@@ -3,7 +3,7 @@ title: Introduction
 type: docs
 ---
 
-# https://guts-of-git.carson-anderson.com
+# https://karianderson-aya.github.io/workshop-guts-of-git/
 
 An interactive guide to digging into git operations and what they actually
 do.

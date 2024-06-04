@@ -1,4 +1,4 @@
-baseURL = 'https://guts-of-git.carson-anderson.com/'
+baseURL = 'https://karianderson-aya.github.io/workshop-guts-of-git'
 languageCode = 'en-us'
 title = 'Guts of Git'
 theme = 'hugo-book'
@@ -52,7 +52,7 @@ enableGitInfo = false
 
   # Set source repository location.
   # Used for 'Last Modified' and 'Edit this page' links.
-  BookRepo = 'https://github.com/carsonoid/workshop-guts-of-git'
+  BookRepo = 'https://github.com/karianderson-aya/workshop-guts-of-git'
 
 #   # (Optional, default 'commit') Specifies commit portion of the link to the page's last modified
 #   # commit hash for 'doc' page type.
