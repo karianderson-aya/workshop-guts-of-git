@@ -40,6 +40,61 @@ a terminal.
 > Make a backup if you want to keep work from that repo.
 
 {{< tabs "setup-repo" >}}
+{{< tab "windows" >}}
+```cmd
+cd ..
+
+rmdir /S /Q gitrepo
+mkdir gitrepo
+cd gitrepo
+git init
+
+echo "# My Git Repository" > README.md
+git add README.md
+
+mkdir assets
+echo "Angular" > assets\angular.png
+git add assets
+
+git commit -m "Initial add"
+
+type nul > api
+echo "## Has an API" >> README.md
+git add .
+git commit -m "feat: add api"
+
+git tag v0.0.1
+
+git checkout -b topic
+
+type nul > docs
+git add .
+echo "## Has Docs" >> README.md
+git commit -m "feat: add docs"
+
+echo "acls" >> api
+echo "## Has ACLs" >> README.md
+git add .
+git commit -m "feat: add acls"
+
+git checkout main
+
+type nul > users
+echo "## Has Users" >> README.md
+git add .
+git commit -m "feat: add users"
+
+echo "refactored" >> api
+echo "## API Refactored" >> README.md
+git add .
+git commit -m "refactor: api"
+
+git checkout topic
+
+echo "======= Setup success! ======="
+
+```
+{{< /tab >}}
 {{< tab "bash" >}}
 ```bash
 cd ~
@@ -56,11 +111,11 @@ echo "# My Git Repository" > README.md
 git add README.md
 
 mkdir assets
-curl -Lo assets/gopher.png \
-   https://go.dev/doc/gopher/doc.png
+curl -Lo assets/angular.png \
+   https://angular.jp/assets/images/logos/angular/angular.svg
 git add assets
 
-git commit -m "Initial Add"
+git commit -m "Initial add"
 
 touch api
 echo "## Has an API" >> README.md
@@ -102,61 +157,6 @@ EOF
 cd ~/gitrepo
 ```
 {{< /tab >}}
-{{< tab "windows" >}}
-```cmd
-cd ..
-
-rmdir /S /Q gitrepo
-mkdir gitrepo
-cd gitrepo
-git init
-
-echo "# My Git Repository" > README.md
-git add README.md
-
-mkdir assets
-echo "Gopher" > assets\gopher.png
-git add assets
-
-git commit -m "Initial Add"
-
-type nul > api
-echo "## Has an API" >> README.md
-git add .
-git commit -m "feat: add api"
-
-git tag v0.0.1
-
-git checkout -b topic
-
-type nul > docs
-git add .
-echo "## Has Docs" >> README.md
-git commit -m "feat: add docs"
-
-echo "acls" >> api
-echo "## Has ACLs" >> README.md
-git add .
-git commit -m "feat: add acls"
-
-git checkout main
-
-type nul > users
-echo "## Has Users" >> README.md
-git add .
-git commit -m "feat: add users"
-
-echo "refactored" >> api
-echo "## API Refactored" >> README.md
-git add .
-git commit -m "refactor: api"
-
-git checkout topic
-
-echo "======= Setup success! ======="
-
-```
-{{< /tab >}}
 {{< /tabs >}}
 
 {{< /details >}}
@@ -174,10 +174,10 @@ git log topic --pretty=oneline
 e4a3fc6118be3193724b4d44dd1c3e2361ceefb1 (HEAD -> topic) feat: add acls
 e79af8b7d0f95d7ec80637051734c8bae5b22c45 feat: add docs
 221f2c37b9de909e5e25b53031f752f8f1f0ebb4 (tag: v0.0.1) feat: add api
-f74cd0034f3cba2fd6b26864e1e153ebae340b41 Initial Add
+f74cd0034f3cba2fd6b26864e1e153ebae340b41 Initial add
 ```
 
-THe log for `main`
+The log for `main`
 
 ```bash
 git log main --pretty=oneline
@@ -187,7 +187,7 @@ git log main --pretty=oneline
 61545bbb1473e52bdab38ff78c1af57d47a5f9de (main) refactor: api
 7ccefa1ff40dc32a49d1a9372b3265dd2c9a4ca1 feat: add users
 221f2c37b9de909e5e25b53031f752f8f1f0ebb4 (tag: v0.0.1) feat: add api
-f74cd0034f3cba2fd6b26864e1e153ebae340b41 Initial Add
+f74cd0034f3cba2fd6b26864e1e153ebae340b41 Initial add
 ```
 
 {{<                                                               page-break >}}
@@ -301,7 +301,7 @@ f5e5392a7004366c9a1f48799497bdbf7e883ff9 feat: add acls
 baa9e2f0cc6eb1e93edf1d3c5fba36b6ad5236a6 feat: add docs
 0064f0d618f1f6e4d286fb27e081aa7d88246e27 feat: add users
 98c289adc2a366186c3d3db1e8f987ef592243b7 (tag: v0.0.1) feat: add api
-ad28d84b252411157d857c41931fbf9e8add1851 Initial Add
+ad28d84b252411157d857c41931fbf9e8add1851 Initial add
 ```
 
 {{< figure src="stack-diagrams/s10.png" >}}
@@ -375,7 +375,7 @@ git log --pretty=oneline --graph
 * | baa9e2f0cc6eb1e93edf1d3c5fba36b6ad5236a6 feat: add docs
 |/
 * 98c289adc2a366186c3d3db1e8f987ef592243b7 (tag: v0.0.1) feat: add api
-* ad28d84b252411157d857c41931fbf9e8add1851 Initial Add
+* ad28d84b252411157d857c41931fbf9e8add1851 Initial add
 ```
 
 {{<                                                               page-break >}}
@@ -412,7 +412,7 @@ Then check the log:
 * | baa9e2f0cc6eb1e93edf1d3c5fba36b6ad5236a6 feat: add docs
 |/
 * 98c289adc2a366186c3d3db1e8f987ef592243b7 (tag: v0.0.1) feat: add api
-* ad28d84b252411157d857c41931fbf9e8add1851 Initial Add
+* ad28d84b252411157d857c41931fbf9e8add1851 Initial add
 ```
 
 In this case you can see one feature of `merge` it did *not* make another merge
@@ -528,7 +528,6 @@ So a git diagram for merge-heavy branches can often look like this:
 
 {{< mermaid >}}
 %%{init: { 'theme': 'neutral' } }%%
-
 gitGraph
     commit id: "Initial add" tag: "v0.0.1"
     commit id: "feat: add api"
@@ -543,10 +542,10 @@ gitGraph
     commit id: "please work"
     checkout main
     commit id: "feat: add ACLs"
-    checkout feat1
-    merge main id: "Merge branch 'main' into  feat1"
+    <!-- checkout feat1
+    merge main id: "Merge branch 'main' into feat1"
     checkout main
-    merge feat1 id: "Merge branch 'feat1' into main"
+    merge feat1 id: "Merge branch 'feat1' into main" -->
 {{< /mermaid >}}
 
 Thanks to all of our `git merge` commands we get to enshrine every bad

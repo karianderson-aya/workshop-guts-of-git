@@ -19,11 +19,11 @@ For example, since this workshop comes from a repo hosted on GitHub it has two r
 that are available:
 
 ```
-https://github.com/carsonoid/workshop-guts-of-git.git
+https://github.com/karianderson-aya/workshop-guts-of-git.git
 ```
 
 ```
-git@github.com:carsonoid/workshop-guts-of-git.git
+git@github.com:karianderson-aya/workshop-guts-of-git.git
 ```
 
 Both of these are valid `remotes` for git.
@@ -51,6 +51,43 @@ the rest of this section.
 You can simply click in the block below to copy the snippet and paste it into
 a terminal.
 
+{{< tabs "setup-repo0" >}}
+{{< tab "windows" >}}
+```cmd
+cd ..
+
+rmdir /S /Q gitrepo
+mkdir gitrepo
+cd gitrepo
+git init
+
+echo "# My Git Repository" > README.md
+git add README.md
+
+mkdir assets
+cho "Angular" > assets\angular.png
+git add assets
+
+git commit -m "Initial add"
+
+type nul > api
+echo "## Has an API" >> README.md
+git add .
+git commit -m "feat: add api"
+
+git tag v0.0.1
+
+git checkout -b topic
+
+echo
+echo "======= Setup success! ======="
+echo
+echo "------- git log -------"
+
+git log
+```
+{{< /tab >}}
+{{< tab "bash" >}}
 ```bash
 cd ~
 
@@ -66,11 +103,11 @@ echo "# My Git Repository" > README.md
 git add README.md
 
 mkdir assets
-curl -Lo assets/gopher.png \
-   https://go.dev/doc/gopher/doc.png
+curl -Lo assets/angular.png \
+   https://angular.jp/assets/images/logos/angular/angular.svg
 git add assets
 
-git commit -m "Initial Add"
+git commit -m "Initial add"
 
 touch api
 echo "## Has an API" >> README.md
@@ -87,8 +124,10 @@ echo
 echo "------- git log -------"
 
 git log
-EOF
 ```
+{{< /tab >}}
+{{< /tabs >}}
+
 {{< /details >}}
 
 
@@ -246,4 +285,4 @@ You could try this for yourself by following the exercise up to the `fetch` step
 You will end up with the same git log regardless of method
 {{< /hint >}}
 
-{{< page-break last="true" nextRef="../update-with-merge" title="Next Section" >}}
+{{< page-break last="true" nextRef="../fundamentals" title="Next Section"                            >}}

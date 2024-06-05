@@ -50,16 +50,16 @@ help you see the value added:
 
 ```sh
 # Clean state
-carson@weave /home/carson/tmp/myrepo [main {origin/main}|✔]
+karianderson-aya /home/kari/tmp/myrepo [main {origin/main}|✔]
 
 # New Files
-carson@weave /home/carson/tmp/myrepo [main {origin/main}|..1]
+karianderson-aya /home/kari/tmp/myrepo [main {origin/main}|..1]
 
 # Unpushed Commits
-carson@weave /home/carson/tmp/myrepo [main {origin/main}↑·1|✔]
+karianderson-aya /home/kari/tmp/myrepo [main {origin/main}↑·1|✔]
 
 # Diverged
-carson@weave /home/carson/tmp/myrepo [main {origin/main}↓·3↑·1|✔]
+karianderson-aya /home/kari/tmp/myrepo [main {origin/main}↓·3↑·1|✔]
 ```
 
 ## Conventional Commits

@@ -16,7 +16,12 @@
 }
 
 // Give article headings after page breaks some space
-.pagebreak > h1,h2,h3,h4,h5,h6 {
+.pagebreak>h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
     padding-top: 2vh;
 }
 
@@ -30,4 +35,15 @@ p.mermaid {
 
 details {
     margin-bottom: 1em;
+}
+
+body {
+    --color-link: #4DCFEF;
+    --color-visited-link: #4DCFEF;
+    --body-background: #232D37;
+    --body-font-color: #C1CBD5;
+    --icon-filter: brightness(0) invert(1);
+    --hint-color-info: #6bf;
+    --hint-color-warning: #fd6;
+    --hint-color-danger: #FF6363;
 }

@@ -22,14 +22,14 @@ With that in mind, below you will find my #1 tip for protecting yourself when yo
 are doing things that are scary in git:
 
 {{< tabs "setup-repo" >}}
-{{< tab "bash" >}}
-```bash
-cp -rp ./my-repo ./my-repo.bak
-```
-{{< /tab >}}
 {{< tab "windows" >}}
 ```cmd
 copy my-repo my-repo.bak
+```
+{{< /tab >}}
+{{< tab "bash" >}}
+```bash
+cp -rp ./my-repo ./my-repo.bak
 ```
 {{< /tab >}}
 {{< /tabs >}}

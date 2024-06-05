@@ -1,6 +1,7 @@
 ---
 weight: -1000
 title: "Preamble"
+bookCollapseSection: true
 ---
 
 # Why Do We Use Git? (Or any VCS?)
@@ -33,3 +34,5 @@ We use it so we can have full control and history over our code. This means we w
 * Metadata - Why (commit messages)?
 * Flow control - Add changes, Revert Changes, Update to latest
 * Conflict Resolution - Annoying, but absolutely essential
+
+{{< page-break last="true" nextRef="../fundamentals" title="Next Section"     >}}

@@ -18,17 +18,17 @@ It's time to start by making an empty Git repository. We do this by making
 a directory, changing into it, and using `git init`
 
 {{< tabs "setup-repo" >}}
-{{< tab "bash" >}}
-```bash
-mkdir ~/gitrepo
-cd ~/gitrepo
-git init
-```
-{{< /tab >}}
 {{< tab "windows" >}}
  ```cmd
 mkdir gitrepo
 cd gitrepo
+git init
+```
+{{< /tab >}}
+{{< tab "bash" >}}
+```bash
+mkdir ~/gitrepo
+cd ~/gitrepo
 git init
 ```
 {{< /tab >}}
@@ -43,14 +43,14 @@ That's right, all that actually happened was that `git` created a bunch of files
 You can see the contents pretty easily using something like the `tree` command
 
 {{< tabs "tree-view1" >}}
-{{< tab "bash" >}}
-```bash
-tree -F .git
-```
-{{< /tab >}}
 {{< tab "windows" >}}
 ```cmd
 tree /F .git
+```
+{{< /tab >}}
+{{< tab "bash" >}}
+```bash
+tree -F .git
 ```
 {{< /tab >}}
 {{< /tabs >}}
@@ -93,14 +93,14 @@ Now that we have an empty repo, let's poke around a bit
 ### The `HEAD` file
 
 {{< tabs >}}
-{{< tab "bash" >}}
-```bash
-cat .git/HEAD
-```
-{{< /tab >}}
 {{< tab "windows" >}}
 ```cmd
 type .git\HEAD
+```
+{{< /tab >}}
+{{< tab "bash" >}}
+```bash
+cat .git/HEAD
 ```
 {{< /tab >}}
 {{< /tabs >}}
@@ -114,14 +114,14 @@ ref: refs/heads/main
 ### The `config` file
 
 {{< tabs "config-view" >}}
-{{< tab "bash" >}}
-```bash
-cat .git/config
-```
-{{< /tab >}}
 {{< tab "windows" >}}
 ```cmd
 type .git\config
+```
+{{< /tab >}}
+{{< tab "bash" >}}
+```bash
+cat .git/config
 ```
 {{< /tab >}}
 {{< /tabs >}}
@@ -192,14 +192,14 @@ Changes to be committed:
 What did that `git add` do? And how does `git status` know that there is a new file?
 
 {{< tabs "tree-view2" >}}
-{{< tab "bash" >}}
-```bash
-tree -F .git
-```
-{{< /tab >}}
 {{< tab "windows" >}}
 ```cmd
 tree /F .git
+```
+{{< /tab >}}
+{{< tab "bash" >}}
+```bash
+tree -F .git
 ```
 {{< /tab >}}
 {{< /tabs >}}
@@ -209,8 +209,8 @@ tree /F .git
 ├── index
 ├── ... # omitted for space
 ├── objects/
-│   ├── 88/
-│   │   └── cbae6fb9b1ab364976238c1eb6871093ed3860
+│   ├── 55/
+│   │   └── 4831d31d996c78236895836c9f1ce76eef7ac2
 │   ├── info
 │   └── pack
 └── refs
@@ -230,8 +230,8 @@ There are two things to note in this output. The `index` file and the new `objec
 ```txt
 .git
 ├── objects/
-│   ├── 88/
-│   │   └── cbae6fb9b1ab364976238c1eb6871093ed3860
+│   ├── 55/
+│   │   └── 4831d31d996c78236895836c9f1ce76eef7ac2
 ```
 
 We can dig into this file ourselves by using the `cat-file` sub-command.
@@ -239,7 +239,7 @@ We can dig into this file ourselves by using the `cat-file` sub-command.
 * The `-p` tells `cat-file` to guess the object type and pretty-print accordingly.
 
 ```bash
-git cat-file -p 88cbae6fb9b1ab364976238c1eb6871093ed3860
+git cat-file -p 554831d31d996c78236895836c9f1ce76eef7ac2
 ```
 
 In our case there is not much special here. What we see is just the exact content of the file we have staged:
@@ -275,29 +275,27 @@ git ls-files --stage
 ```
 
 ```txt
-100644 88cbae6fb9b1ab364976238c1eb6871093ed3860 0	README.md
+100644 884831d31d996c78236895836c9f1ce76eef7ac2 0	README.md
 ```
 
 {{<                                                               page-break >}}
 ### Add More Content
 
 {{< tabs "add-more-content" >}}
-{{< tab "bash" >}}
-```bash
-mkdir assets
-curl -Lo assets/gopher.png \
-   https://go.dev/doc/gopher/doc.png
-
-# if you don't have curl you can use wget
-# wget -O tmp/gopher.png https://go.dev/doc/gopher/doc.png
-
-git add assets
-```
-{{< /tab >}}
 {{< tab "windows" >}}
 ```bash
 mkdir assets
-echo "Gopher" > assets\gopher.png
+echo "Angular" > assets\angular.png
+git add assets
+```
+{{< /tab >}}
+{{< tab "bash" >}}
+```bash
+mkdir assets
+curl -Lo assets/angular.png \
+   https://angular.jp/assets/images/logos/angular/angular.svg
+
+
 git add assets
 ```
 {{< /tab >}}
@@ -319,21 +317,21 @@ Changes to be committed:
   (use "git rm --cached <file>..." to unstage)
 
 	new file:   README.md
-	new file:   assets/gopher.png
+	new file:   assets/angular.png
 ```
 
 {{<                                                               page-break >}}
 #### Dig Deeper
 
 {{< tabs "tree-view3" >}}
-{{< tab "bash" >}}
-```bash
-tree -F .git
-```
-{{< /tab >}}
 {{< tab "windows" >}}
 ```cmd
 tree /F .git
+```
+{{< /tab >}}
+{{< tab "bash" >}}
+```bash
+tree -F .git
 ```
 {{< /tab >}}
 {{< /tabs >}}
@@ -348,10 +346,10 @@ are stored by content hash!
 .git
 ├── ... # omitted for space
 ├── objects/
-│   ├── 88/
-│   │   └── cbae6fb9b1ab364976238c1eb6871093ed3860
-│   ├── e1/
-│   │   └── 5a3234d5d2c87e4e6afc226d971e8ab0c65d2b
+│   ├── 2e/
+│   │   └── 47256f252e601d35aa6072df1b3b9dc57dcafe
+│   ├── 55/
+│   │   └── 4831d31d996c78236895836c9f1ce76eef7ac2
 │   ├── info
 │   └── pack
 └── refs/
@@ -362,14 +360,14 @@ are stored by content hash!
 But what is inside it?
 
 {{< tabs "view-head" >}}
-{{< tab "bash" >}}
-```bash
-git cat-file -p e15a3234d5d2c87e4e6afc226d971e8ab0c65d2b |head -n1
-```
-{{< /tab >}}
 {{< tab "windows" >}}
 ```cmd
-git cat-file -p e15a3234d5d2c87e4e6afc226d971e8ab0c65d2b
+git cat-file -p 2e47256f252e601d35aa6072df1b3b9dc57dcafe
+```
+{{< /tab >}}
+{{< tab "bash" >}}
+```bash
+git cat-file -p 2e47256f252e601d35aa6072df1b3b9dc57dcafe |head -n1
 ```
 {{< /tab >}}
 {{< /tabs >}}
@@ -377,21 +375,30 @@ git cat-file -p e15a3234d5d2c87e4e6afc226d971e8ab0c65d2b
 Again, the whole file! This is a binary file so our test command only shows one line
 but you can see that the first line shows us that it is a `PNG` image
 
-```txt
-�PNG
-```
+"Angular"
 
 {{<                                                               page-break >}}
 ## Commit
 
-```bash
-git commit -m "Initial Add"
+{{< tabs "initial-commit" >}}
+{{< tab "windows" >}}
+```cmd
+git commit -m "Initial add"
 git log
 ```
+{{< /tab >}}
+{{< tab "bash" >}}
+```bash
+git commit -m "Initial add"
+git log
+```
+{{< /tab >}}
+{{< /tabs >}}
+
 
 ```txt
-commit c71366be637024591f202876fbe5224b68f03199 (HEAD -> main)
-Author: Carson Anderson <user@email>
+commit 4ec67093e3ba8a4d9f9db4242f0d64cac717cae4 (HEAD -> main)
+Author: Kari Anderson <user@email>
 Date:   Sun Oct 23 14:09:52 2022 -0600
 
     Initial add
@@ -407,32 +414,32 @@ information about the commit.
 So, what happened to our `.git`?
 
 {{< tabs "tree-view4" >}}
-{{< tab "bash" >}}
-```bash
-tree -F .git
-```
-{{< /tab >}}
 {{< tab "windows" >}}
 ```cmd
 tree /F .git
 ```
 {{< /tab >}}
+{{< tab "bash" >}}
+```bash
+tree -F .git
+```
+{{< /tab >}}
 {{< /tabs >}}
 
-```txt {hl_lines=["4-5","8-11"]}
+```txt {hl_lines=["6-7","10-13"]}
 .git
 ├── ... # omitted for space
 ├── objects/
-│   ├── 10/
-│   │   └── 76d1da17d464ae87160a3dd2519cd0f64f3cd5
-│   ├── 88/
-│   │   └── cbae6fb9b1ab364976238c1eb6871093ed3860
-│   ├── a5/
-│   │   └── c3a3648323f431095a32f4f5ea86885820b80a
-│   ├── c7/
-│   │   └── 1366be637024591f202876fbe5224b68f03199
-│   ├── e1/
-│   │   └── 5a3234d5d2c87e4e6afc226d971e8ab0c65d2b
+│   ├── 2e/
+│   │   └── 47256f252e601d35aa6072df1b3b9dc57dcafe
+│   ├── 52/
+│   │   └── a5b7d8aadabc4f0d0a497375fe05dbc030bbd7
+│   ├── 55/
+│   │   └── 4831d31d996c78236895836c9f1ce76eef7ac2
+│   ├── 5c/
+│   │   └── f38090cb0d0fe2545713324003afb88781823e
+│   ├── f0/
+│   │   └── bcae6b997ac648ff3d13e161fd412e2037add4
 │   ├── info/
 │   └── pack/
 └── refs/
@@ -459,14 +466,14 @@ file has been created in the `refs` directory
 
 
 {{< tabs "tree-refs-view" >}}
-{{< tab "bash" >}}
-```bash
-tree -F .git/refs
-```
-{{< /tab >}}
 {{< tab "windows" >}}
 ```cmd
 tree /f .git\refs
+```
+{{< /tab >}}
+{{< tab "bash" >}}
+```bash
+tree -F .git/refs
 ```
 {{< /tab >}}
 {{< /tabs >}}
@@ -482,20 +489,20 @@ tree /f .git\refs
 What is in there? Just the hash of a git commit!
 
 {{< tabs "view-heads-main" >}}
-{{< tab "bash" >}}
-```bash
-cat .git/refs/heads/main
-```
-{{< /tab >}}
 {{< tab "windows" >}}
 ```cmd
 type .git\refs\heads\main
 ```
 {{< /tab >}}
+{{< tab "bash" >}}
+```bash
+cat .git/refs/heads/main
+```
+{{< /tab >}}
 {{< /tabs >}}
 
 ```txt
-c71366be637024591f202876fbe5224b68f03199
+52a5b7d8aadabc4f0d0a497375fe05dbc030bbd7
 ```
 
 {{<                                                               page-break >}}
@@ -513,26 +520,26 @@ git log --pretty=oneline
 ```
 
 ```txt
-c71366be637024591f202876fbe5224b68f03199 (HEAD -> main) Initial Add
+52a5b7d8aadabc4f0d0a497375fe05dbc030bbd7 (HEAD -> main) Initial add
 ```
 
 2. Cat the ref
 
 {{< tabs "view-heads-main2" >}}
-{{< tab "bash" >}}
-```bash
-cat .git/refs/heads/main
-```
-{{< /tab >}}
 {{< tab "windows" >}}
 ```cmd
 type .git\refs\heads\main
 ```
 {{< /tab >}}
+{{< tab "bash" >}}
+```bash
+cat .git/refs/heads/main
+```
+{{< /tab >}}
 {{< /tabs >}}
 
 ```txt
-c71366be637024591f202876fbe5224b68f03199
+52a5b7d8aadabc4f0d0a497375fe05dbc030bbd7
 ```
 
 3. Show the head commit
@@ -556,22 +563,22 @@ git cat-file -p <hashhere>
 Or let the shell do it by cating our refs file.
 
 {{< tabs "git-cat-file" >}}
-{{< tab "bash" >}}
-```bash
-git cat-file -p $(cat .git/refs/heads/main)
-```
-{{< /tab >}}
 {{< tab "windows" >}}
 ```cmd
 for /F "usebackq delims=" %A in (`type .git\refs\heads\main`) do git cat-file -p %A
 ```
 {{< /tab >}}
+{{< tab "bash" >}}
+```bash
+git cat-file -p $(cat .git/refs/heads/main)
+```
+{{< /tab >}}
 {{< /tabs >}}
 
 ```txt
-tree a5c3a3648323f431095a32f4f5ea86885820b80a
-author Carson Anderson <user@email> 1666555792 -0600
-committer Carson Anderson <user@email> 1666555792 -0600
+tree 5cf38090cb0d0fe2545713324003afb88781823e
+author Kari Anderson <user@email> 1718679771 -0600
+committer Kari Anderson <user@email> 1718679771 -0600
 
 Initial add
 ```
@@ -588,8 +595,8 @@ git cat-file -p <treehashhere>
 ```
 
 ```txt
-100644 blob 88cbae6fb9b1ab364976238c1eb6871093ed3860	README.md
-040000 tree 1076d1da17d464ae87160a3dd2519cd0f64f3cd5	assets
+100644 blob 554831d31d996c78236895836c9f1ce76eef7ac2    README.md
+040000 tree f0bcae6b997ac648ff3d13e161fd412e2037add4    assets
 ```
 
 
@@ -603,7 +610,7 @@ git cat-file -p <nestedtreehash>
 ```
 
 ```txt
-100644 blob e15a3234d5d2c87e4e6afc226d971e8ab0c65d2b	gopher.png
+100644 blob 2e47256f252e601d35aa6072df1b3b9dc57dcafe    angular.png
 ```
 
 {{<                                                               page-break >}}
@@ -636,17 +643,17 @@ pointers to commit objects.
 ## Another Commit
 
 {{< tabs "another-commit" >}}
-{{< tab "bash" >}}
-```bash
-touch api
+{{< tab "windows" >}}
+```cmd
+type nul > api
 echo "## Has an API" >> README.md
 git add .
 git commit -m "feat: add api"
 ```
 {{< /tab >}}
-{{< tab "windows" >}}
-```cmd
-type nul > api
+{{< tab "bash" >}}
+```bash
+touch api
 echo "## Has an API" >> README.md
 git add .
 git commit -m "feat: add api"
@@ -661,14 +668,14 @@ git log
 ```
 
 ```txt
-commit 5b8b4cf7db77f140bd16de41fb541725c8dacb8a (HEAD -> main)
-Author: Carson Anderson <user@email>
+commit 7c71634c84608d3800def128a0a72b9bc091b24d (HEAD -> main)
+Author: Kari Anderson <user@email>
 Date:   Sun Oct 23 14:23:48 2022 -0600
 
     feat: add api
 
-commit c71366be637024591f202876fbe5224b68f03199
-Author: Carson Anderson <user@email>
+commit 52a5b7d8aadabc4f0d0a497375fe05dbc030bbd7
+Author: Kari Anderson <user@email>
 Date:   Sun Oct 23 14:09:52 2022 -0600
 
     Initial add
@@ -680,23 +687,23 @@ Date:   Sun Oct 23 14:09:52 2022 -0600
 We can now have git show us the latest commit content as before
 
 {{< tabs "git-cat-file2" >}}
-{{< tab "bash" >}}
-```bash
-git cat-file -p $(cat .git/refs/heads/main)
-```
-{{< /tab >}}
 {{< tab "windows" >}}
 ```cmd
 for /F "usebackq delims=" %A in (`type .git\refs\heads\main`) do git cat-file -p %A
 ```
 {{< /tab >}}
+{{< tab "bash" >}}
+```bash
+git cat-file -p $(cat .git/refs/heads/main)
+```
+{{< /tab >}}
 {{< /tabs >}}
 
 ```txt {hl_lines=[2]}
-tree d3d6344e952d73a8f8a33cab518ef1a1b13d44c7
-parent c71366be637024591f202876fbe5224b68f03199
-author Carson Anderson <user@email> 1666556628 -0600
-committer Carson Anderson <user@email> 1666556628 -0600
+tree 318e9de0f136c0b2c664ea7bcde2a8774c2b5012
+parent 52a5b7d8aadabc4f0d0a497375fe05dbc030bbd7
+author Kari Anderson <user@email> 1666556628 -0600
+committer Kari Anderson <user@email> 1666556628 -0600
 
 feat: add api
 ```
@@ -725,14 +732,14 @@ git tag v0.0.1
 Now we can see that all we did was make a new tag file in `.git/refs/tags`
 
 {{< tabs "tree-refs-view2" >}}
-{{< tab "bash" >}}
-```bash
-tree -F .git/refs
-```
-{{< /tab >}}
 {{< tab "windows" >}}
 ```cmd
 tree /F .git\refs
+```
+{{< /tab >}}
+{{< tab "bash" >}}
+```bash
+tree -F .git/refs
 ```
 {{< /tab >}}
 {{< /tabs >}}
@@ -748,25 +755,25 @@ tree /F .git\refs
 The content is the exact same as our `refs/heads/main` ref
 
 {{< tabs "tail-view" >}}
-{{< tab "bash" >}}
-```bash
-tail .git/refs/*/*
-```
-{{< /tab >}}
 {{< tab "windows" >}}
 ```bash
 type .git\refs\heads\main
 type .git\refs\tags\v0.0.1
 ```
 {{< /tab >}}
+{{< tab "bash" >}}
+```bash
+tail .git/refs/*/*
+```
+{{< /tab >}}
 {{< /tabs >}}
 
 ```txt
 ==> .git/refs/heads/main <==
-5b8b4cf7db77f140bd16de41fb541725c8dacb8a
+7c71634c84608d3800def128a0a72b9bc091b24d
 
 ==> .git/refs/tags/v0.0.1 <==
-5b8b4cf7db77f140bd16de41fb541725c8dacb8a
+7c71634c84608d3800def128a0a72b9bc091b24d
 ```
 
 {{< details "Does this mean you could create a new branch or tag by hand?" >}}
@@ -780,7 +787,7 @@ accidentally create a branch or tag that points to a bad target. But it *is* pos
 You can try it:
 
 ```bash
-echo 5b8b4cf7db77f140bd16de41fb541725c8dacb8a > .git/refs/tags/manual-tag
+echo 7c71634c84608d3800def128a0a72b9bc091b24d > .git/refs/tags/manual-tag
 git tag
 ```
 
@@ -812,13 +819,13 @@ git log
 
 ```txt {hl_lines=[1]}
 commit 5b8b4cf7db77f140bd16de41fb541725c8dacb8a (HEAD -> main, tag: v0.0.1)
-Author: Carson Anderson <user@email>
+Author: Kari Anderson <user@email>
 Date:   Sun Oct 23 14:23:48 2022 -0600
 
     feat: add api
 
 commit c71366be637024591f202876fbe5224b68f03199
-Author: Carson Anderson <user@email>
+Author: Kari Anderson <user@email>
 Date:   Sun Oct 23 14:09:52 2022 -0600
 
     Initial add
@@ -844,14 +851,14 @@ git checkout -b topic
 ```
 
 {{< tabs "tree-ref-view4" >}}
-{{< tab "bash" >}}
-```bash
-tree -F .git/refs
-```
-{{< /tab >}}
 {{< tab "windows" >}}
 ```cmd
 tree /F .git\refs
+```
+{{< /tab >}}
+{{< tab "bash" >}}
+```bash
+tree -F .git/refs
 ```
 {{< /tab >}}
 {{< /tabs >}}
@@ -869,17 +876,17 @@ tree /F .git\refs
 ### Commit to `topic`
 
 {{< tabs "add-users" >}}
-{{< tab "bash" >}}
-```bash
-touch users
+{{< tab "windows" >}}
+```cmd
+type nul > users
 echo "## Has Users" >> README.md
 git add .
 git commit -m "feat: add users"
 ```
 {{< /tab >}}
-{{< tab "windows" >}}
-```cmd
-type nul > users
+{{< tab "bash" >}}
+```bash
+touch users
 echo "## Has Users" >> README.md
 git add .
 git commit -m "feat: add users"
@@ -900,19 +907,19 @@ Notice two things
 
 ```txt {hl_lines=[1,7]}
 commit 60f4c94a3c4f7af884bdd8d5726fbbca8cdcbdae (HEAD -> topic)
-Author: Carson Anderson <user@email>
+Author: Kari Anderson <user@email>
 Date:   Sun Oct 23 14:42:37 2022 -0600
 
     feat: add users
 
 commit 5b8b4cf7db77f140bd16de41fb541725c8dacb8a (tag: v0.0.1, main)
-Author: Carson Anderson <user@email>
+Author: Kari Anderson <user@email>
 Date:   Sun Oct 23 14:23:48 2022 -0600
 
     feat: add api
 
 commit c71366be637024591f202876fbe5224b68f03199
-Author: Carson Anderson <user@email>
+Author: Kari Anderson <user@email>
 Date:   Sun Oct 23 14:09:52 2022 -0600
 
     Initial add
@@ -961,21 +968,21 @@ Commits have one or more parents. While you could do a lot of work to try and fi
 Now let's go **back** to main and have it make some parallel changes
 
 {{< tabs "add-docs" >}}
-{{< tab "bash" >}}
-```bash
-git checkout main
-
-touch docs.md
-echo "## Has Docs" >> README.md
-git add .
-git commit -m "feat: add docs"
-```
-{{< /tab >}}
 {{< tab "windows" >}}
 ```cmd
 git checkout main
 
 type nul > docs.md
+echo "## Has Docs" >> README.md
+git add .
+git commit -m "feat: add docs"
+```
+{{< /tab >}}
+{{< tab "bash" >}}
+```bash
+git checkout main
+
+touch docs.md
 echo "## Has Docs" >> README.md
 git add .
 git commit -m "feat: add docs"
@@ -991,19 +998,19 @@ git log
 
 ```txt {hl_lines=[1]}
 commit c2d71219e98d8bbd1240e3aa820b32659ad5045c (HEAD -> main)
-Author: Carson Anderson <user@email>
+Author: Kari Anderson <user@email>
 Date:   Sun Oct 23 14:50:12 2022 -0600
 
     feat: add docs
 
 commit 5b8b4cf7db77f140bd16de41fb541725c8dacb8a (tag: v0.0.1)
-Author: Carson Anderson <user@email>
+Author: Kari Anderson <user@email>
 Date:   Sun Oct 23 14:23:48 2022 -0600
 
     feat: add api
 
 commit c71366be637024591f202876fbe5224b68f03199
-Author: Carson Anderson <user@email>
+Author: Kari Anderson <user@email>
 Date:   Sun Oct 23 14:09:52 2022 -0600
 
     Initial add
@@ -1080,6 +1087,17 @@ and complete the merge.
 > You can just save and close the editor prompt that comes up.
 
 {{< tabs "manual-merge" >}}
+{{< tab "windows" >}}
+```cmd
+(echo # My Git Repository
+echo ## Has an API
+echo ## Has Docs
+echo ## Has Users) > readme.md
+
+git add .
+git commit
+```
+{{< /tab >}}
 {{< tab "bash" >}}
 ```bash
 cat > README.md <<EOL
@@ -1088,17 +1106,6 @@ cat > README.md <<EOL
 ## Has Docs
 ## Has Users
 EOL
-
-git add .
-git commit
-```
-{{< /tab >}}
-{{< tab "windows" >}}
-```cmd
-(echo # My Git Repository
-echo ## Has an API
-echo ## Has Docs
-echo ## Has Users) > readme.md
 
 git add .
 git commit
@@ -1139,7 +1146,7 @@ The output has one line that is specifically interesting. The `Merge:` line
 ```txt {hl_lines=["2"]}
 commit 5fb51187efb652c7da6c3366588e4fa8f2ea9535 (HEAD -> main)
 Merge: c2d7121 60f4c94
-Author: Carson Anderson <email>
+Author: Kari Anderson <email>
 Date:   Sat Mar 11 11:35:33 2023 -0700
 
     Merge branch 'topic'
@@ -1148,19 +1155,19 @@ Date:   Sat Mar 11 11:35:33 2023 -0700
     #       README.md
 
 commit c2d71219e98d8bbd1240e3aa820b32659ad5045c (HEAD -> main)
-Author: Carson Anderson <user@email>
+Author: Kari Anderson <user@email>
 Date:   Sun Oct 23 14:50:12 2022 -0600
 
     feat: add docs
 
 commit 60f4c947db77f140bd16de41fb541725c8dacb8a (tag: v0.0.1)
-Author: Carson Anderson <user@email>
+Author: Kari Anderson <user@email>
 Date:   Sun Oct 23 14:23:48 2022 -0600
 
     feat: add api
 
 commit c71366be637024591f202876fbe5224b68f03199
-Author: Carson Anderson <user@email>
+Author: Kari Anderson <user@email>
 Date:   Sun Oct 23 14:09:52 2022 -0600
 
     Initial add
@@ -1179,14 +1186,14 @@ where you combine the two histories.
 Just like before, let's look at the raw contents of our latest commit
 
 {{< tabs "git-cat-file3" >}}
-{{< tab "bash" >}}
-```bash
-git cat-file -p $(cat .git/refs/heads/main)
-```
-{{< /tab >}}
 {{< tab "windows" >}}
 ```cmd
 for /F "usebackq delims=" %A in (`type .git\refs\heads\main`) do git cat-file -p %A
+```
+{{< /tab >}}
+{{< tab "bash" >}}
+```bash
+git cat-file -p $(cat .git/refs/heads/main)
 ```
 {{< /tab >}}
 {{< /tabs >}}
@@ -1199,8 +1206,8 @@ is where `git log` got those short hashes.
 tree 9521bc081dd964a77a02f756bb52892d00379f07
 parent 11e86be1b4ae2bee490d8c51bb6dcbb597964f35
 parent b94c70770fc56ff85874eaa43165821403bb4729
-author Carson Anderson <email> 1678559733 -0700
-committer Carson Anderson <email> 1678559733 -0700
+author Kari Anderson <email> 1678559733 -0700
+committer Kari Anderson <email> 1678559733 -0700
 
 Merge branch 'topic'
 

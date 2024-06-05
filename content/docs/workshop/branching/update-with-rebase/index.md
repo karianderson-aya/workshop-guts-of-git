@@ -40,6 +40,61 @@ a terminal.
 > Make a backup if you want to keep work from that repo.
 
 {{< tabs "setup-repo1" >}}
+{{< tab "windows" >}}
+```cmd
+cd ..
+
+rmdir /S /Q gitrepo
+mkdir gitrepo
+cd gitrepo
+git init
+
+echo "# My Git Repository" > README.md
+git add README.md
+
+mkdir assets
+echo "Angular" > assets\angular.png
+git add assets
+
+git commit -m "Initial add"
+
+type nul > api
+echo "## Has an API" >> README.md
+git add .
+git commit -m "feat: add api"
+
+git tag v0.0.1
+
+git checkout -b topic
+
+type nul > docs
+git add .
+echo "## Has Docs" >> README.md
+git commit -m "feat: add docs"
+
+echo "acls" >> api
+echo "## Has ACLs" >> README.md
+git add .
+git commit -m "feat: add acls"
+
+git checkout main
+
+type nul > users
+echo "## Has Users" >> README.md
+git add .
+git commit -m "feat: add users"
+
+echo "refactored" >> api
+echo "## API Refactored" >> README.md
+git add .
+git commit -m "refactor: api"
+
+git checkout topic
+
+echo "======= Setup success! ======="
+
+```
+{{< /tab >}}
 {{< tab "bash" >}}
 ```bash
 cd ~
@@ -56,11 +111,11 @@ echo "# My Git Repository" > README.md
 git add README.md
 
 mkdir assets
-curl -Lo assets/gopher.png \
-   https://go.dev/doc/gopher/doc.png
+curl -Lo assets/angular.png \
+   https://angular.jp/assets/images/logos/angular/angular.svg
 git add assets
 
-git commit -m "Initial Add"
+git commit -m "Initial add"
 
 touch api
 echo "## Has an API" >> README.md
@@ -110,61 +165,6 @@ git log main
 EOF
 
 cd ~/gitrepo
-```
-{{< /tab >}}
-{{< tab "windows" >}}
-```cmd
-cd ..
-
-rmdir /S /Q gitrepo
-mkdir gitrepo
-cd gitrepo
-git init
-
-echo "# My Git Repository" > README.md
-git add README.md
-
-mkdir assets
-echo "Gopher" > assets\gopher.png
-git add assets
-
-git commit -m "Initial Add"
-
-type nul > api
-echo "## Has an API" >> README.md
-git add .
-git commit -m "feat: add api"
-
-git tag v0.0.1
-
-git checkout -b topic
-
-type nul > docs
-git add .
-echo "## Has Docs" >> README.md
-git commit -m "feat: add docs"
-
-echo "acls" >> api
-echo "## Has ACLs" >> README.md
-git add .
-git commit -m "feat: add acls"
-
-git checkout main
-
-type nul > users
-echo "## Has Users" >> README.md
-git add .
-git commit -m "feat: add users"
-
-echo "refactored" >> api
-echo "## API Refactored" >> README.md
-git add .
-git commit -m "refactor: api"
-
-git checkout topic
-
-echo "======= Setup success! ======="
-
 ```
 {{< /tab >}}
 {{< /tabs >}}
@@ -343,7 +343,7 @@ latest commits from `main`
 a116397a8bc43c7f42fb8f3b192add0b5fbcacc9 (main) refactor: api
 c7d22f2b3b1fe579d0220f0a0a62b83780037aa1 feat: add users
 76a04f2486251799139c0c86b106b825830575f5 (tag: v0.0.1) feat: add api
-45ab9223c6b9085a003e604615e1f59913683aef Initial Add
+45ab9223c6b9085a003e604615e1f59913683aef Initial add
 ```
 
 {{<                                                               page-break >}}
@@ -410,7 +410,7 @@ git log --pretty=oneline --graph
 * a116397a8bc43c7f42fb8f3b192add0b5fbcacc9 refactor: api
 * c7d22f2b3b1fe579d0220f0a0a62b83780037aa1 feat: add users
 * 76a04f2486251799139c0c86b106b825830575f5 (tag: v0.0.1) feat: add api
-* 45ab9223c6b9085a003e604615e1f59913683aef Initial Add
+* 45ab9223c6b9085a003e604615e1f59913683aef Initial add
 ```
 
 So what did we get here? In our case we get clean linear commit history. When
@@ -458,6 +458,69 @@ a terminal.
 > Make a backup if you want to keep work from that repo.
 
 {{< tabs "setup-repo2" >}}
+{{< tab "windows" >}}
+```cmd
+cd ..
+
+rmdir /S /Q gitrepo
+mkdir gitrepo
+cd gitrepo
+git init
+
+echo "# My Git Repository" > README.md
+git add README.md
+
+mkdir assets
+echo "Angular" > assets\angular.png
+git add assets
+
+git commit -m "Initial add"
+
+type nul > api
+echo "## Has an API" >> README.md
+git add .
+git commit -m "feat: add api"
+
+git tag v0.0.1
+
+git checkout -b topic
+
+type nul > docs
+echo "## Has Docs" >> README.md
+git add .
+git commit -m "feat: add docs system"
+
+echo "docuument feature 1" >> docs
+git add .
+git commit -m "doc: feaature 1"
+
+echo "acls" >> api
+git add .
+git commit -m "feat: add acls"
+
+echo "document feature 1" >> docs
+git add .
+git commit -m "fix: doc typo"
+
+echo "fixed" >> api
+git add .
+git commit -m "fix: acls"
+
+echo "fixed1" >> api
+git add .
+git commit -m "please work"
+
+echo "fixed2" >> api
+git add .
+git commit -m "asdf"
+
+echo "fixed3" >> api
+git add .
+git commit -m "language X is DUMB! :("
+
+echo "======= Setup success! ======="
+```
+{{< /tab >}}
 {{< tab "bash" >}}
 ```bash
 cd ~
@@ -474,11 +537,11 @@ echo "# My Git Repository" > README.md
 git add README.md
 
 mkdir assets
-curl -Lo assets/gopher.png \
-   https://go.dev/doc/gopher/doc.png
+curl -Lo assets/angular.png \
+   https://angular.jp/assets/images/logos/angular/angular.svg
 git add assets
 
-git commit -m "Initial Add"
+git commit -m "Initial add"
 
 touch api
 echo "## Has an API" >> README.md
@@ -529,69 +592,6 @@ EOF
 cd ~/gitrepo
 ```
 {{< /tab >}}
-{{< tab "windows" >}}
-```cmd
-cd ..
-
-rmdir /S /Q gitrepo
-mkdir gitrepo
-cd gitrepo
-git init
-
-echo "# My Git Repository" > README.md
-git add README.md
-
-mkdir assets
-echo "Gopher" > assets\gopher.png
-git add assets
-
-git commit -m "Initial Add"
-
-type nul > api
-echo "## Has an API" >> README.md
-git add .
-git commit -m "feat: add api"
-
-git tag v0.0.1
-
-git checkout -b topic
-
-type nul > docs
-echo "## Has Docs" >> README.md
-git add .
-git commit -m "feat: add docs system"
-
-echo "docuument feature 1" >> docs
-git add .
-git commit -m "doc: feaature 1"
-
-echo "acls" >> api
-git add .
-git commit -m "feat: add acls"
-
-echo "document feature 1" >> docs
-git add .
-git commit -m "fix: doc typo"
-
-echo "fixed" >> api
-git add .
-git commit -m "fix: acls"
-
-echo "fixed1" >> api
-git add .
-git commit -m "please work"
-
-echo "fixed2" >> api
-git add .
-git commit -m "asdf"
-
-echo "fixed3" >> api
-git add .
-git commit -m "language X is DUMB! :("
-
-echo "======= Setup success! ======="
-```
-{{< /tab >}}
 {{< /tabs >}}
 {{< /details >}}
 
@@ -612,7 +612,7 @@ fc0ecdbf66460c758904eb9043a5dd905cfbec0f feat: add acls
 9135c0f138ca3fe61f92b063c0c34f524f947919 doc: feaature 1
 325f6e3202bddfa071ee8ab8963b9132a5b5a183 feat: add docs system
 2dfbd06f94cba98f58a3a626efba10c2198ac86d (tag: v0.0.1, main) feat: add api
-66fa49f6d4c275b2e9b4d3cd2a43c545035394d7 Initial Add
+66fa49f6d4c275b2e9b4d3cd2a43c545035394d7 Initial add
 ```
 
 There are some commits here where someone clearly got frustrated! Are we really sure
@@ -739,7 +739,7 @@ git log --pretty=oneline --reverse
 ```
 
 ```txt {hl_lines=[1]}
-66fa49f6d4c275b2e9b4d3cd2a43c545035394d7 Initial Add
+66fa49f6d4c275b2e9b4d3cd2a43c545035394d7 Initial add
 2dfbd06f94cba98f58a3a626efba10c2198ac86d (tag: v0.0.1, main) feat: add api
 325f6e3202bddfa071ee8ab8963b9132a5b5a183 feat: add docs system
 9135c0f138ca3fe61f92b063c0c34f524f947919 doc: feaature 1
@@ -841,7 +841,7 @@ git log --pretty=oneline --reverse
 ```
 
 ```txt
-66fa49f6d4c275b2e9b4d3cd2a43c545035394d7 Initial Add
+66fa49f6d4c275b2e9b4d3cd2a43c545035394d7 Initial add
 2dfbd06f94cba98f58a3a626efba10c2198ac86d (tag: v0.0.1, main) feat: add api
 325f6e3202bddfa071ee8ab8963b9132a5b5a183 feat: add docs system
 9135c0f138ca3fe61f92b063c0c34f524f947919 doc: feaature 1
@@ -955,7 +955,7 @@ git log --pretty=oneline --reverse
 ```
 
 ```txt
-66fa49f6d4c275b2e9b4d3cd2a43c545035394d7 Initial Add
+66fa49f6d4c275b2e9b4d3cd2a43c545035394d7 Initial add
 2dfbd06f94cba98f58a3a626efba10c2198ac86d (tag: v0.0.1, main) feat: add api
 325f6e3202bddfa071ee8ab8963b9132a5b5a183 feat: add docs system
 a752ea0228391672e834cfef1fa0c34c11f5c899 doc: feature 1
